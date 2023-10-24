@@ -1,0 +1,29 @@
+﻿@model RunManagerWebApp.Models.Club
+@using RunManagerWebApp.Data.Enum;
+
+@{
+    //ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>@Model.Title</h5>
+                <p class="mb-0">@Model.Description</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-2">
+                <p><b>Miasto: </b>@Model.Address.PostalCode @Model.Address.City</p>
+                <p><b>Ulica: </b>@Model.Address.Street</p>
+                <p><b>Trenujemy przede wszystkim: </b> @Html.DisplayFor(x => Model.RaceType)</p>
+                <p> </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="@Model.Image" alt="@Model.Title" class="rounded">
+        </div><!-- / column -->
+    </div>
+</div>

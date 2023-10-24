@@ -1,0 +1,31 @@
+﻿@model RunManagerWebApp.Models.Race
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>@Model.Title</h5>
+                
+                
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-2">
+                <p><b>Opis: </b>@Model.Description</p>
+                <p><b>Dystans: </b>@Html.DisplayFor(x => Model.RaceDistance)</p>
+                <p><b>Miasto: </b>@Model.Address.PostalCode @Model.Address.City</p>
+                <p><b>Ulica: </b>@Model.Address.Street</p>
+                <p><b>Rodzaj biegu: </b> @Html.DisplayFor(x => Model.RaceType)</p>
+                <p><b>Data biegu: </b> @Html.DisplayFor(x => Model.RaceDate)</p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="@Model.Image" alt="@Model.Title" class="rounded" width="100%">
+        </div><!-- / column -->
+    </div>
+</div>

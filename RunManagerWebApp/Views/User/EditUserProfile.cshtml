@@ -1,0 +1,64 @@
+﻿@using RunManagerWebApp.ViewModels;
+@model EditUserViewModel;
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edytuj profil użytkownika</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" asp-action="EditUserProfile">
+            <input type="hidden" id="Id" name="Id" asp-for="Id" />
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">Nazwa użytkownika</label>
+                <input asp-for="UserName" class="form-control" placeholder="@User.Identity.Name" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pace" class="control-label">Tempo</label>
+                <input asp-for="Pace" class="form-control" placeholder="Średnie tempo biegu" />
+                <span asp-validation-for="Pace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label">Przebieg</label>
+                <input asp-for="Mileage" class="form-control" placeholder="Przebieg tygodnia" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label">Miasto</label>
+                <input asp-for="City" class="form-control" placeholder="Miasto" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode">Kod pocztowy</label>
+                <input asp-for="PostalCode" class="form-control" placeholder="Kod pocztowy (00-000)" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfileImage" class="control-label">Zdjęcie profilowe</label>
+                <input asp-for="ProfileImage" class="form-control" placeholder="Podaj adres url"></input>
+                <span asp-validation-for="ProfileImage" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-1">Edytuj</button>
+        </form>
+    </div>
+    <div class="col align-self-center text-center ">
+        <img class="table-borderless" id="imgNew" width="60%" />
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $("#ProfileImage").on("change", function () {
+            var output = document.getElementById("imgNew");
+            output.src = $(this).val();
+        })
+    </script>
+}

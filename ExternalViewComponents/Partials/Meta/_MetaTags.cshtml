@@ -1,0 +1,15 @@
+﻿@using ExternalViewComponents.Models.Meta
+
+@{
+    var metaTags = ViewData["MetaTags"] as MetaTags;
+    if (metaTags != null)
+    {
+        // Do the tags
+        <meta name="description" content="@metaTags.Description" />
+        <meta name="keywords" content="@metaTags.Keywords" />
+        <meta property="og:site_name" content="Run Manager" />
+        <meta property="og:title" content="@metaTags.Title" />
+        <meta property="og:description" content="@metaTags.Description" />
+        <meta property="og:language" content="@metaTags.Language" />
+    }
+}

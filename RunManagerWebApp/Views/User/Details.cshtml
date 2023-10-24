@@ -1,0 +1,54 @@
+﻿@using RunManagerWebApp.ViewModels;
+@model UserDetailViewModel
+
+@*@{
+    ViewData["Title"] = "Details";
+}*@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h6><b>Nazwa użytkownika: </b>@Model.UserName</h6>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-2">
+                
+                @if (Model.Mileage is not null)
+                {
+                    <p><b>Ilość pokonwywanych kilometrów tygodniowo: </b>@Model.Mileage km</p>
+                }
+                else
+                {
+                    <p>Biegacz nie uzupełnił danych ile kilometrów robi tygodniowo!</p>
+                }
+
+                @if (Model.Pace is not null)
+                {
+                    <p><b>Średnie tempo biegu: </b> @Model.Pace</p>
+                }
+                else
+                {
+                    <p>Biegacz nie uzupełnił danych o średnim tempie biegu z treningów!</p>
+                } 
+                @if (Model.City is not null && Model.PostalCode is not null)
+                {
+                    <p><b>Adres biegacza: </b>@Model.PostalCode @Model.City</p>
+                }
+                else
+                {
+                    <p>Biegacz nie uzupełnił danych o adresie!</p>
+                }
+               
+            </div><!-- / project-info-box -->
+
+            <div class="col-md-7">
+                @if (Model.ProfileImage is not null) 
+                {
+                    <img src="@Model.ProfileImage" alt="@Model.UserName" class="rounded" width="100%">
+                }
+                
+            </div><!-- / column -->
+        </div><!-- / column -->
+    </div>
+</div>

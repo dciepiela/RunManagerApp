@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RunManagerWebApp.Models.Race>
+
+<h2 class="text-center mb-3 mt-3">Najlbliższe zawody</h2>
+<div class="row">
+     @foreach (var race in Model)
+    {
+        if(DateTime.Now < race.RaceDate){
+    <div class="col-lg-4">
+        <img class="rounded-circle" src="@race.Image" alt="@race.Title" width="140" height="140">
+        <h2>@race.Title</h2>
+        <p>Data zawodów: @Html.DisplayFor(x => race.RaceDate)</p>
+            <p>Ilość pozostałych dni: <b>@Html.Label(" ",race.RaceDate.Subtract(DateTime.Now).Days.ToString())</b></p>
+        <p>
+            <a asp-controller="Race" asp-action="Details" asp-route-id="@race.Id" type="button" class="btn btn-sm btn-outline-secondary">Pokaż więcej</a>
+        </p>
+    </div>
+        }
+    }
+</div>
